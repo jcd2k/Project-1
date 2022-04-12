@@ -8,11 +8,65 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
   <link rel="stylesheet" href="./assets/css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 <title>Greenplanet Landscaping</title>
 </head>
 
 <main>
     <header>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <!-- navbar-brand is left side and always visable -->
+        <div class="navbar-brand">
+          <!-- change href to landing page link -->
+          <a class="navbar-item" href="#">
+            <!-- add logo or image to img src -->
+            <img src="#" width="112" height="28">
+          </a>
+      
+          <!-- burger is the 3 line menu icon -->
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarTop" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              <!-- add link to home -->
+              Home
+            </a>
+      
+            <a class="navbar-item">
+              <!-- add link to about -->
+              About
+            </a>
+      
+              <a class="navbar-link">
+                <!-- add link to contact -->
+                Contact
+              </a>
+
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary">
+                      <!-- add link to services -->
+                      <strong>Services</strong>
+                    </a>
+                </a>
+
+              <div class="navbar-end"></div>
+                <a class="navbar-item">
+                  <!-- add link to scheduling -->
+                  Scheduling
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
 
     </header>
     <body>
