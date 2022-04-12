@@ -14,17 +14,15 @@
 
 <main>
     <header>
-      <nav class="navbar" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <!-- navbar-brand is left side and always visable -->
         <div class="navbar-brand">
           <!-- change href to landing page link -->
           <a class="navbar-item" href="#">
-            <!-- add logo or image to img src -->
-            <img src="#" width="112" height="28">
           </a>
       
           <!-- burger is the 3 line menu icon -->
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarTop">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -33,34 +31,35 @@
       
         <div id="navbarTop" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
+            <a class="navbar-item" href="#">
               <!-- add link to home -->
               Home
             </a>
       
-            <a class="navbar-item">
+            <a class="navbar-item" href="#">
               <!-- add link to about -->
               About
             </a>
       
-              <a class="navbar-link">
+            <a class="navbar-item" href="#">
                 <!-- add link to contact -->
                 Contact
-              </a>
+            </a>
 
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-item">
-                  <div class="buttons">
-                    <a class="button is-primary">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
                       <!-- add link to services -->
                       <strong>Services</strong>
-                    </a>
-                </a>
+              </a>
 
-              <div class="navbar-end"></div>
-                <a class="navbar-item">
-                  <!-- add link to scheduling -->
-                  Scheduling
+              <div class="navbar-dropdown"></div>
+                <a class="navbar-item" href="#">
+                    <!-- add link to scheduling -->
+                    Scheduling
+                </a>
+                <a class="navbar-item" href="#">
+                    <!-- add link to scheduling -->
+                    Pricing
                 </a>
               </div>
             </div>
