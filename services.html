@@ -48,54 +48,28 @@
         </div>
       </nav>
     </header>
-
-    <br><br><br><br><br><br>
     <body>
-      <div class="columns is-multiline is-mobile"></div>
-        <!-- form -->
-        <div class="column is-half">
-          <!-- email section -->
-          <div class="field">
-            <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email">
-              <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-              </span>
-            </p>
-          </div>
-          <!-- comment section -->
-          <div class="field">
-            <p class="control has-icons-left">
-              <input class="input" type="comment" placeholder="Leave brief summary of project here...">
-              <span class="icon is-small is-left">
-                <i class="fas fa-lock"></i>
-              </span>
-            </p>
-          </div>
-          <!-- submit button -->
-          <div class="field">
-            <p class="control">
-              <button class="button is-success" onclick="location.href='mailto:xyz@abc.com';">
-                Send
-              </button>
-            </p>
-          </div>
-        </div>
+      <container class="container" id="calendarContainer">
+        <p>calendar will go here</p>
+      </container>
 
-          <!-- calendar will go here -->
-        <div class="column is-half">
-          <div class="calendarContainer">
-            <p>insert calendar here</p>
-          </div>
-        </div>
-      </div>
+      <input class="input" type="search" placeholder="Search by City, Zipcode, or Address" id="searchBar">
+      <span class="icon is-small">
+        <i class="fas fa-envelope"></i>
+      </span>
+
+      <container class="container" id="mapContainer">
+        <p>map will go here</p>
+      </container>
 
     </body>
-    <footer>
-
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Email adress: email123@email.com <br> Phone Number: (555)-555-555
+        </p>
+      </div>
+      
     </footer>
 </main>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
