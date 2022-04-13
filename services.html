@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <link rel="stylesheet" href="assets/css/services.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
   <title>Greenplanet Landscaping</title>
   </head>
 
@@ -48,9 +51,12 @@
         </div>
       </nav>
     </header>
+
+    <br><br><br>
     <body>
+
       <container class="container" id="calendarContainer">
-        <p>calendar will go here</p>
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FDenver&src=dXRhZ3JvdXA2QGdtYWlsLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%2333B679&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
       </container>
 
       <input class="input" type="search" placeholder="Search by City, Zipcode, or Address" id="searchBar">
@@ -58,10 +64,20 @@
         <i class="fas fa-envelope"></i>
       </span>
 
+      <div class="field">
+        <p class="control">
+          <button class="button is-success">
+            Search
+          </button>
+        </p>
+
       <container class="container" id="mapContainer">
-        <p>map will go here</p>
+        <div id="map" style="width: 600px; height: 400px;"></div>
       </container>
 
+      <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""></script>
     </body>
     <footer class="footer">
       <div class="content has-text-centered">
