@@ -14,9 +14,88 @@
 
 <main>
     <header>
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <!-- navbar-brand fixed to the top and always visable -->
+          <!-- burger is the 3 line menu icon -->
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarTop">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarTop" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#">
+              <!-- add link to home -->
+              Home
+            </a>
+      
+            <a class="navbar-item" href="about-index.html">
+              <!-- add link to about -->
+              About
+            </a>
+      
+            <a class="navbar-item" href="#">
+                <!-- add link to contact -->
+                Contact
+            </a>
 
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
+                      <!-- add link to services -->
+                      <strong>Services</strong>
+              </a>
+              <div class="navbar-dropdown is-hidden-mobile is-boxed"></div>
+                <a class="navbar-item" href="#">
+                    <!-- add link to scheduling -->
+                    Scheduling
+                </a>
+                <a class="navbar-item" href="#">
+                    <!-- add link to scheduling -->
+                    Pricing
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
+
+    <br><br><br><br><br>
     <body>
+        <section class="contactSection">
+          <h1 class="title has-text-centered">Contact us for a quote!</h1>
+        </section>
+
+        <br><br><br><br><br>
+<!-- form for email and comment -->
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Email">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input class="input" type="comment" placeholder="Leave brief summary of project here...">
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button class="button is-success">
+              Send
+            </button>
+          </p>
+        </div>
 
     </body>
     <footer>
