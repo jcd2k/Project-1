@@ -17,7 +17,7 @@ function requestWeather(lat, long) {
   fetch("https://api.ambeedata.com/weather/forecast/by-lat-lng?lat=12.9889055&lng=77.574044&filter=%7Bhourly%7Cminutely%7Cdaily%7D", {
 	"method": "GET",
 	"headers": {
-		"x-api-key": "API_KEY",
+		"x-api-key": "6daaa382f98875845ab18f8a3b543169336e5b8020404394ed68c712e6e45efd",
 		"Content-type": "application/json"
 	}
 }).then((response) => {
