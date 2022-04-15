@@ -1,4 +1,4 @@
-const requestSoil = fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12.9889055&lng=77.574044", {
+const requestWeather = fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12.9889055&lng=77.574044", {
 	"method": "GET",
 	"headers": {
 		"x-api-key": "9701541e554818ac1427335351c7c2e9a4bda649a060ab3d66ce553ff6de5b0e",
@@ -12,21 +12,30 @@ const requestSoil = fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=
 	console.error(err);
 });
 
-const requestWeather = fetch("https://api.ambeedata.com/weather/forecast/by-lat-lng?lat=12.9889055&lng=77.574044&filter=%7Bhourly%7Cminutely%7Cdaily%7D", {
-	"method": "GET",
-	"headers": {
-		"x-api-key": "9701541e554818ac1427335351c7c2e9a4bda649a060ab3d66ce553ff6de5b0e",
-		"Content-type": "application/json"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
 
-const locationData()[
+function renderWeather (){
+  
+}
+
+function requestSoil(lat, long){
+  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12.9889055&lng=77.574044", {
+    "method": "GET",
+    "headers": {
+      "x-api-key": "9701541e554818ac1427335351c7c2e9a4bda649a060ab3d66ce553ff6de5b0e",
+      "Content-type": "application/json"
+    }
+  }).then((response) => {
+    console.log(response);
+    response.json().then((data) => {
+        console.log(data);
+    
+    });
+  })
+};
+
+requestWeather()
+
+const locationData = [
     {
       "state":"Alaska",
       "latitude":61.3850,
