@@ -66,6 +66,4 @@ function saveLastSearch() {
 
 getCoordinates()
 
-requestWeather()
-
 // appends - state selection for soil data, weather dashboard for corresponding input - card content 
