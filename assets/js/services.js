@@ -3,6 +3,13 @@ var forecastDisplay = document.getElementById('forecastDisplay');
 
 const userSearch = document.getElementById('searchBar')
 
+<<<<<<< HEAD
+=======
+$("#searchBtn").on("click", function(event) {
+    event.preventDefault();
+})
+
+>>>>>>> 895aa64ac254948ba057b6c9dccdf8f608837aa2
 function getCoordinates() {
   fetch("https://maps.googleapis.com/maps/api/geocode/json?address=944+Agua+Caliente,+El+Paso,+TX&key=AIzaSyDvRRtw_P5lPBhpH7bb8VJqCg7R7LtI9h0")
   .then((response) => {
@@ -11,6 +18,7 @@ function getCoordinates() {
       console.log(data);
     });
   })
+<<<<<<< HEAD
 }
 
 // function requestWeather() {
@@ -30,6 +38,12 @@ function getCoordinates() {
 
 function requestWeather() {
   fetch("api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid=d31373940f7f8b59573632e5332e9f3f", {
+=======
+};
+
+function requestWeather() {
+  fetch("https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&cnt=10&appid=d31373940f7f8b59573632e5332e9f3f", {
+>>>>>>> 895aa64ac254948ba057b6c9dccdf8f608837aa2
 	"method": "GET",
 	"headers": {
 		"Content-type": "application/json"
@@ -87,7 +101,11 @@ function renderWeather (){
 
 getCoordinates()
 
+<<<<<<< HEAD
 requestWeather()
+=======
+requestWeather();
+>>>>>>> 895aa64ac254948ba057b6c9dccdf8f608837aa2
 
 // appends - state selection for soil data, weather dashboard for corresponding input - card content 
 
