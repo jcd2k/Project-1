@@ -90,6 +90,9 @@ function renderWeather (){
 
 getCoordinates()
 
+<<<<<<< HEAD
+// appends - state selection for soil data, weather dashboard for corresponding input - card content 
+=======
 requestWeather()
 
 // appends - state selection for soil data, weather dashboard for corresponding input - card content 
@@ -99,3 +102,4 @@ function init() {
   renderLastWeather();
 }
 init();
+>>>>>>> 4a1e3c4e887cca98c486ae68bfd53d532d5539c2
