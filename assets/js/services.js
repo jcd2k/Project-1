@@ -1,4 +1,4 @@
-var serachedTerm = document.getElementById("searchedTerm");
+var cityInputEl = document.querySelector("searchBar");
 var forecastDisplay = document.getElementById('forecastDisplay');
 
 const userSearch = document.getElementById('searchBar')
@@ -17,19 +17,40 @@ function getCoordinates() {
   })
 };
 
-function requestWeather() {
-  fetch("https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&cnt=10&appid=d31373940f7f8b59573632e5332e9f3f", {
-	"method": "GET",
-	"headers": {
-		"Content-type": "application/json"
-	}
-}).then((response) => {
-    console.log(response);
-    response.json().then((data) => {
-      console.log(data);
-    });
-  })
+var apiKey = "d31373940f7f8b59573632e5332e9f3f";
+// take city from search bar and put it into a variable
+var searchContent = function (event) {
+  event.preventDefault();
+
+  city = cityInputEl.value.trim();
+  requestWeather(city);
+  requestForecast(city);
 };
+
+var requestWeather = function (cityName) {
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName+ "&appid=" + apiKey 
+  + "&units=imperial";
+
+    fetch(queryURL).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          var cityName = data.name;
+          displayWeather(data, cityName);
+        });
+      }
+
+  //   "method": "GET",
+  //   "headers": {
+  //     "Content-type": "application/json"
+  //   }
+  // }).then((response) => {
+  //     console.log(response);
+  //     response.json().then((data) => {
+  //       console.log(data);
+  //     });
+  //   })
+  // };
 
 function saveLastWeather() {
   // Save related form data as an object
