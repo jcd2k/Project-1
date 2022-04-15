@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="assets/css/services.css"/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
   <title>Greenplanet Landscaping</title>
   </head>
@@ -56,94 +55,285 @@
     <br><br><br>
     <body>
 
-      <container class="container" id="calendarContainer">
-        <div class="container">
-          <div class="row time-block" id="day-1">1</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-2">2</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-3">3</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-4">4</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-5">5</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-6">6</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-7">7</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-8">8</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-9">9</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-10">10</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-11">11</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-12">12</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-12">13</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-          <div class="row time-block" id="day-14">14</div>
-              <div class="col-1 hour"></div>
-              <textarea class="col-10"></textarea>
-              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
-      </div>
-      </container>
-
+      <!-- search bar for weather forecast -->
       <input class="input" type="search" placeholder="Search by City, Zipcode, or Address" id="searchBar">
       <span class="icon is-small">
         <i class="fas fa-envelope"></i>
       </span>
-
+<!-- search button -->
       <div class="field">
         <p class="control">
-          <button class="button is-success">
+          <button class="button is-success" id="searchButton">
             Search
           </button>
         </p>
-<!-- container for 16-day forecast -->
-      <container class="forecastContainer">
-        <div class="card">
-          <div class="cardBody">
-            <h3 class="cardTitle">
-              <input class="forecastInput" type="text">
-            </h3>
+        <br><br>
+<!-- day 1-8 container for weather forecast -->
+      <container class="container" id="calendarContainer1">
+        <div class="container">
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day1">1</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day2">2</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day3">3</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day4">4</div>
+            <input tclass="forecastInput" ype="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day5">5</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day6">6</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day7">7</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day8">8</div>
+            <input class="forecastInput" type="text">
           </div>
         </div>
-      </container>
+<br>
+<!-- day 9-16 container for weather forecast -->
+      <container class="container" id="calendarContainer2">
+        <div class="container">
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day9">9</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day10">10</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day11">11</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day12">12</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day13">13</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day14">14</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day15">15</div>
+            <input class="forecastInput" type="text">
+          </div>
+          <div class="columns is-multiline is-desktop is-mobile">
+            <div class="row weather-block" id="day16">16</div>
+            <input class="forecastInput" type="text">
+          </div>
+        </div>
+<br><br><br>
+<!-- dropdown selector for states for soil data -->
+      <div class="dropdown">
+        <div class="dropdown-trigger">
+          <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span>Select a state</span>
+            <span class="icon is-small">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content">
+            <a href="#" class="dropdown-item">
+              Alaska
+            </a>
+            <a href="#" class="dropdown-item">
+              Alabama
+            </a>
+            <a href="#" class="dropdown-item">
+              Arizona
+            </a>
+            <a href="#" class="dropdown-item">
+              Arkansas
+            </a>
+            <a href="#" class="dropdown-item">
+              California
+            </a>
+            <a href="#" class="dropdown-item">
+              Colorado
+            </a>
+            <a href="#" class="dropdown-item">
+              Connecticut
+            </a>
+            <hr class="dropdown-divider">
+            <a href="#" class="dropdown-item">
+              Delaware
+            </a>
+            <a href="#" class="dropdown-item">
+              Florida
+            </a>
+            <a href="#" class="dropdown-item">
+              Georgia
+            </a>
+            <a href="#" class="dropdown-item">
+              Hawaii
+            </a>
+            <a href="#" class="dropdown-item">
+              Idaho
+            </a>
+            <a href="#" class="dropdown-item">
+              Illinois
+            </a>
+            <a href="#" class="dropdown-item">
+              Indiana
+            </a>
+            <a href="#" class="dropdown-item">
+              Iowa
+            </a>
+            <a href="#" class="dropdown-item">
+              Kansas
+            </a>
+            <a href="#" class="dropdown-item">
+              Kentucky
+            </a>
+            <a href="#" class="dropdown-item">
+              Louisiana
+            </a>
+            <a href="#" class="dropdown-item">
+              Maine
+            </a>
+            <a href="#" class="dropdown-item">
+              Maryland
+            </a>
+            <a href="#" class="dropdown-item">
+              Massachusetts
+            </a>
+            <a href="#" class="dropdown-item">
+              Michigan
+            </a>
+            <a href="#" class="dropdown-item">
+              Minnesota
+            </a>
+            <a href="#" class="dropdown-item">
+              Mississippi
+            </a>
+            <a href="#" class="dropdown-item">
+              Missouri
+            </a>
+            <a href="#" class="dropdown-item">
+              Montana
+            </a>
+            <a href="#" class="dropdown-item">
+              Nebraska
+            </a>
+            <a href="#" class="dropdown-item">
+              Nevada
+            </a>
+            <a href="#" class="dropdown-item">
+              New Hampshire
+            </a>
+            <a href="#" class="dropdown-item">
+              New Jersey
+            </a>
+            <a href="#" class="dropdown-item">
+              New Mexico
+            </a>
+            <a href="#" class="dropdown-item">
+              New York
+            </a>
+            <a href="#" class="dropdown-item">
+              North Carolina
+            </a>
+            <a href="#" class="dropdown-item">
+              North Dakota
+            </a>
+            <a href="#" class="dropdown-item">
+              Ohio
+            </a>
+            <a href="#" class="dropdown-item">
+              Oklahoma
+            </a>
+            <a href="#" class="dropdown-item">
+              Oregon
+            </a>
+            <a href="#" class="dropdown-item">
+              Pennsylvania
+            </a>
+            <a href="#" class="dropdown-item">
+              Rhode Island
+            </a>
+            <a href="#" class="dropdown-item">
+              South Carolina
+            </a>
+            <a href="#" class="dropdown-item">
+              South Dakota
+            </a>
+            <a href="#" class="dropdown-item">
+              Tennessee
+            </a>
+            <a href="#" class="dropdown-item">
+              Texas
+            </a>
+            <a href="#" class="dropdown-item">
+              Utah
+            </a>
+            <a href="#" class="dropdown-item">
+              Vermont
+            </a>
+            <a href="#" class="dropdown-item">
+              Virginia
+            </a>
+            <a href="#" class="dropdown-item">
+              Washington
+            </a>
+            <a href="#" class="dropdown-item">
+              West Virginia
+            </a>
+            <a href="#" class="dropdown-item">
+              Wisconsin
+            </a>
+            <a href="#" class="dropdown-item">
+              Wyoming
+            </a>
+          </div>
+        </div>
+      </div>
+<!-- card for soil data details -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-header-title" input="text" id="stateName">
+            Placeholder for State Name
+            <div class="card-content" input="text" id="weatherDetails"></div>
+            Soil Details
+          </div>
+        </div>
+      </div>
+
+  
+
 <!-- map goes here -->
       <div id="map"></div>
+<<<<<<< HEAD
       
       <script src="./assets/js/services.js"></script>
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+=======
+      <script src="./assets/js/services.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+
+>>>>>>> a749052d2db2f88738580a45963fcf4d5b214a8f
     </body>
     <footer class="footer">
       <div class="content has-text-centered">
@@ -151,7 +341,6 @@
           Email adress: email123@email.com <br> Phone Number: (555)-555-555
         </p>
       </div>
-      
     </footer>
 </main>
 </html>
