@@ -1,3 +1,6 @@
+var serachedTerm = document.getElementById("searchedTerm");
+var forecastDisplay = document.getElementById('forecastDisplay');
+
 const userSearch = document.getElementById('searchBar')
 
 function getCoordinates() {
@@ -23,20 +26,31 @@ function requestWeather(lat, long) {
       console.log(data);
     });
   })
-
-  // var currentWeather = $(`
-  //   <h2 id="currentWeather">
-  //       ${weatherResponse.name} ${today} 
-  //   </h2>
-  //   <p>Temperature: ${response.main.temp} °F</p>
-  //   <p>Humidity: ${response.main.humidity}\%</p>
-  //   <p>Wind Speed: ${response.wind.speed} MPH</p>
-  // `);
-
-  // $("#forecastDisplay").append(currentWeather);
-
 };
 
+function saveLastWeather() {
+  // Save related form data as an object
+  var weatherDetails = {
+    temperature: temperature.value,
+    humidity: humidity.value,
+    uvIndex: uvIndex.value.
+  };
+  // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+  localStorage.setItem("weatherDetails", JSON.stringify(weatherDetails));
+}
+
+function renderLastWeather() {
+  // Use JSON.parse() to convert text to JavaScript object
+  var lastWeather = JSON.parse(localStorage.getItem("weatherDetails"));
+  // Check if data is returned, if not exit out of the function
+  if (lastWeather !== null) {
+  document.getElementById("temp").innerHTML = lastWeather.temp;
+  document.getElementById("humid").innerHTML = lastWeather.humid;
+  document.getElementById("uv").innerHTML = lastWeather.uv;
+  } else {
+    return;
+  }
+}
 
 function requestSoil(lat, long) {
   fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12.9889055&lng=77.574044", {
@@ -57,15 +71,14 @@ function renderWeather (){
 
 }
 
-function saveLastSearch() {
-  var lastSearch = {
-      history:
-  };
-  localStorage.setItem("lastSearch", JSON.stringify(lastSearch));
-}
-
 getCoordinates()
 
 requestWeather()
 
 // appends - state selection for soil data, weather dashboard for corresponding input - card content 
+
+function init() {
+  // When the init function is executed, the code inside renderLastGrade function will also execute
+  renderLastWeather();
+}
+init();
