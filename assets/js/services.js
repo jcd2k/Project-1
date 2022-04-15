@@ -1,4 +1,4 @@
-var serachedTerm = document.getElementById("searchedTerm");
+
 var forecastDisplay = document.getElementById('forecastDisplay');
 
 const userSearch = document.getElementById('searchBar')
@@ -22,18 +22,22 @@ function requestWeather(lat, long) {
 	}
 }).then((response) => {
     console.log(response);
-    response.json().then((data) => {
-      console.log(data);
-    });
+    response.json()
   })
+  .then((data) => {
+    console.log(data);
+  });
 };
+
+
+var serachedTerm = document.getElementById("searchedTerm");
 
 function saveLastWeather() {
   // Save related form data as an object
   var weatherDetails = {
     temperature: temperature.value,
     humidity: humidity.value,
-    uvIndex: uvIndex.value.
+    uvIndex: uvIndex.value,
   };
   // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
   localStorage.setItem("weatherDetails", JSON.stringify(weatherDetails));
@@ -44,6 +48,7 @@ function renderLastWeather() {
   var lastWeather = JSON.parse(localStorage.getItem("weatherDetails"));
   // Check if data is returned, if not exit out of the function
   if (lastWeather !== null) {
+  document.getElementById("searchedTerm").innerHTML = lastWeather.searchedTerm;
   document.getElementById("temp").innerHTML = lastWeather.temp;
   document.getElementById("humid").innerHTML = lastWeather.humid;
   document.getElementById("uv").innerHTML = lastWeather.uv;
@@ -66,6 +71,18 @@ function requestSoil(lat, long) {
     });
   })
 };
+
+
+
+searchButton.addEventListener("click", function(event) {
+  event.preventDefault();
+    localStorage.setItem("searchedTerm", searchedTerm);
+    localStorage.setItem("temp", temp);
+    localStorage.setItem("humid", humid);
+    localStorage.setItem("uv", uv);
+    renderLastRegistered();
+});
+
 
 function renderWeather (){
 
