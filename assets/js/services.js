@@ -38,8 +38,7 @@ function getCoordinates() {
 
 function requestWeather() {
   fetch("api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid=d31373940f7f8b59573632e5332e9f3f", {
-=======
-};
+
 
 <<<<<<< HEAD
 var apiKey = "d31373940f7f8b59573632e5332e9f3f";
@@ -50,10 +49,10 @@ var searchContent = function (event) {
   city = cityInputEl.value.trim();
   requestWeather(city);
   requestForecast(city);
-=======
+
 function requestWeather() {
   fetch("https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&cnt=10&appid=d31373940f7f8b59573632e5332e9f3f", {
->>>>>>> 895aa64ac254948ba057b6c9dccdf8f608837aa2
+
 	"method": "GET",
 	"headers": {
 		"Content-type": "application/json"
@@ -64,7 +63,6 @@ function requestWeather() {
       console.log(data);
     });
   })
->>>>>>> f72075154f5f93e7a04641bea85ecf132959f5c0
 };
 
 var requestWeather = function (cityName) {
@@ -79,6 +77,11 @@ var requestWeather = function (cityName) {
           displayWeather(data, cityName);
         });
       }
+      else {
+        alert('Error');
+      }
+    });
+};    
 
   //   "method": "GET",
   //   "headers": {
@@ -137,11 +140,11 @@ function renderWeather (){
 
 getCoordinates()
 
-<<<<<<< HEAD
+
 requestWeather()
-=======
+
 requestWeather();
->>>>>>> 895aa64ac254948ba057b6c9dccdf8f608837aa2
+
 
 // appends - state selection for soil data, weather dashboard for corresponding input - card content 
 
