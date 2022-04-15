@@ -32,7 +32,11 @@ function requestWeather() {
   fetch("api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}", {
 	"method": "GET",
 	"headers": {
+<<<<<<< HEAD
 		"x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
+=======
+		"x-api-key": "6daaa382f98875845ab18f8a3b543169336e5b8020404394ed68c712e6e45efd",
+>>>>>>> fbd4dccf2727e35a3b24963a2b2ee4f17a12e73e
 		"Content-type": "application/json"
 	}
 }).then((response) => {
@@ -87,6 +91,7 @@ function renderWeather (){
 }
 
 getCoordinates()
+
 requestWeather()
 
 // appends - state selection for soil data, weather dashboard for corresponding input - card content 
