@@ -23,7 +23,20 @@ function requestWeather(lat, long) {
       console.log(data);
     });
   })
+
+  // var currentWeather = $(`
+  //   <h2 id="currentWeather">
+  //       ${weatherResponse.name} ${today} 
+  //   </h2>
+  //   <p>Temperature: ${response.main.temp} °F</p>
+  //   <p>Humidity: ${response.main.humidity}\%</p>
+  //   <p>Wind Speed: ${response.wind.speed} MPH</p>
+  // `);
+
+  // $("#forecastDisplay").append(currentWeather);
+
 };
+
 
 function requestSoil(lat, long) {
   fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12.9889055&lng=77.574044", {
