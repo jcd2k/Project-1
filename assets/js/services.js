@@ -26,7 +26,9 @@ const requestWeather = fetch("https://api.ambeedata.com/weather/forecast/by-lat-
 	console.error(err);
 });
 
-const locationData()[
+
+
+const locationData = locationData[
     {
       "state":"Alaska",
       "latitude":61.3850,
