@@ -278,3 +278,5 @@ const locationData()[
       "longitude":-107.2085
     }
   ]
+
+  // appends - state selection for soil data, weather dashboard for corresponding input - card content 
