@@ -2,6 +2,7 @@ html
 body{
     height: 100%;
     background-color: #71be52;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -61,3 +62,31 @@ body {
   nav.navbar.is-fixed-top{
       background: #71be52;
   }
+
+  #weatherContent {
+    display: none;
+}
+
+.input-group {
+  max-width: 200px;
+}
+
+#forecastDisplay,
+#uvIndexColor,
+li {
+  color: #4D4F53!important;
+}
+
+#citySearch,
+#forecastDisplay,
+.card {
+  background-color: #5A6C73!important;
+}
+
+#citySearch {
+  height: 100vh;
+}
+
+#fiveForecast .card {
+  border: 1px solid white!important;
+}
