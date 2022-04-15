@@ -57,6 +57,13 @@ function renderWeather (){
 
 }
 
+function saveLastSearch() {
+  var lastSearch = {
+      history:
+  };
+  localStorage.setItem("lastSearch", JSON.stringify(lastSearch));
+}
+
 getCoordinates()
 
 requestWeather()
