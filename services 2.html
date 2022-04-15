@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <link rel="stylesheet" href="assets/css/services.css"/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+  <title>Greenplanet Landscaping</title>
+  </head>
+
+<main>
+    <header>
+      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <!-- navbar-brand fixed to the top and always visable -->
+          <!-- burger is the 3 line menu icon -->
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarTop">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarTop" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="#">
+              <!-- add link to home -->
+              Home
+            </a>
+      
+            <a class="navbar-item" href="about-index.html">
+              <!-- add link to about -->
+              About
+            </a>
+      <!-- contact.html link will work once we merge the contact branch to main -->
+            <a class="navbar-item" href="contact.html">
+                <!-- add link to contact -->
+                Contact
+            </a>
+
+            <a class="navbar-item" href="#">
+              <!-- add link to services -->
+              Services
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <br><br><br>
+    <body>
+
+      <container class="container" id="calendarContainer">
+        <div class="container">
+          <div class="row time-block" id="day-1">1</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-2">2</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-3">3</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-4">4</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-5">5</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-6">6</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-7">7</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-8">8</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-9">9</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-10">10</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-11">11</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-12">12</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-12">13</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+          <div class="row time-block" id="day-14">14</div>
+              <div class="col-1 hour"></div>
+              <textarea class="col-10"></textarea>
+              <button class="col-1 save-btn"><i class="fas fa-save"></i></button>
+      </div>
+      </container>
+
+      <input class="input" type="search" placeholder="Search by City, Zipcode, or Address" id="searchBar">
+      <span class="icon is-small">
+        <i class="fas fa-envelope"></i>
+      </span>
+
+      <div class="field">
+        <p class="control">
+          <button class="button is-success">
+            Search
+          </button>
+        </p>
+<!-- container for 16-day forecast -->
+      <container class="forecastContainer">
+        <div class="card">
+          <div class="cardBody">
+            <h3 class="cardTitle">
+              <input class="forecastInput" type="text">
+            </h3>
+          </div>
+        </div>
+      </container>
+<!-- map goes here -->
+      <div id="map"></div>
+
+    </body>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Email adress: email123@email.com <br> Phone Number: (555)-555-555
+        </p>
+      </div>
+      
+    </footer>
+</main>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</html>
