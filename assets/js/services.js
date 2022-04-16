@@ -3,13 +3,12 @@ var forecastDisplay = document.getElementById('forecastDisplay');
 
 const userSearch = document.getElementById('searchBar')
 
-<<<<<<< HEAD
-=======
 $("#searchBtn").on("click", function(event) {
     event.preventDefault();
 })
 
->>>>>>> 895aa64ac254948ba057b6c9dccdf8f608837aa2
+cityInputEl.addEventListener("search", searchContent);
+
 function getCoordinates() {
   fetch("https://maps.googleapis.com/maps/api/geocode/json?address=944+Agua+Caliente,+El+Paso,+TX&key=AIzaSyDvRRtw_P5lPBhpH7bb8VJqCg7R7LtI9h0")
   .then((response) => {
@@ -18,7 +17,6 @@ function getCoordinates() {
       console.log(data);
     });
   })
-<<<<<<< HEAD
 }
 
 // function requestWeather() {
@@ -36,11 +34,10 @@ function getCoordinates() {
 //   })
 // };
 
-function requestWeather() {
-  fetch("api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid=d31373940f7f8b59573632e5332e9f3f", {
+// function requestWeather() {
+//   fetch("api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid=d31373940f7f8b59573632e5332e9f3f", {
 
 
-<<<<<<< HEAD
 var apiKey = "d31373940f7f8b59573632e5332e9f3f";
 // take city from search bar and put it into a variable
 var searchContent = function (event) {
@@ -50,21 +47,22 @@ var searchContent = function (event) {
   requestWeather(city);
   requestForecast(city);
 
-function requestWeather() {
-  fetch("https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&cnt=10&appid=d31373940f7f8b59573632e5332e9f3f", {
+// function requestWeather() {
+//   fetch("https://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&cnt=10&appid=d31373940f7f8b59573632e5332e9f3f", {
 
-	"method": "GET",
-	"headers": {
-		"Content-type": "application/json"
-	}
-}).then((response) => {
-    console.log(response);
-    response.json().then((data) => {
-      console.log(data);
-    });
-  })
-};
+// 	"method": "GET",
+// 	"headers": {
+// 		"Content-type": "application/json"
+// 	}
+// }).then((response) => {
+//     console.log(response);
+//     response.json().then((data) => {
+//       console.log(data);
+//     });
+//   })
+// };
 
+// request current weather
 var requestWeather = function (cityName) {
   var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName+ "&appid=" + apiKey 
   + "&units=imperial";
@@ -81,19 +79,34 @@ var requestWeather = function (cityName) {
         alert('Error');
       }
     });
-};    
+};
 
-  //   "method": "GET",
-  //   "headers": {
-  //     "Content-type": "application/json"
-  //   }
-  // }).then((response) => {
-  //     console.log(response);
-  //     response.json().then((data) => {
-  //       console.log(data);
-  //     });
-  //   })
-  // };
+var requestForecast = function (cityName) {
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName+ "&appid=" + apiKey 
+  + "&units=imperial";
+
+    fetch(queryURL).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data);
+          var cityName = data.name;
+          displayForecast(data, cityName);
+        });
+      }
+      else {
+        alert('Error');
+      }
+    });
+}; 
+
+var displayWeather = function (weather, cityName) {
+  weatherCard.innerHTML = "";
+  var icon = cityWeather.weather[0].icon;
+  var weather
+
+}
+
+
 
 function saveLastWeather() {
   // Save related form data as an object
@@ -140,10 +153,9 @@ function renderWeather (){
 
 getCoordinates()
 
-
 requestWeather()
 
-requestWeather();
+requestForecast();
 
 
 // appends - state selection for soil data, weather dashboard for corresponding input - card content 
