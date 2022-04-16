@@ -1,9 +1,31 @@
-var addressInputEl = document.querySelector("searchBarAddress");
-var cityInputEl = document.querySelector("searchBarCity");
-var stateInputEl = document.querySelector("searchBarState");
-var forecastDisplay = document.getElementById('forecastDisplay');
+var cities = [];
 
-const userSearch = document.getElementById('searchBar')
+var cityFormEl=document.querySelector("#city-search-form");
+var cityInputEl=document.querySelector("#city");
+var weatherContainerEl=document.querySelector("#current-weather-container");
+var citySearchInputEl = document.querySelector("#searched-city");
+var forecastTitle = document.querySelector("#forecast");
+var forecastContainerEl = document.querySelector("#fiveday-container");
+var pastSearchButtonEl = document.querySelector("#past-search-buttons");
+
+var formSumbitHandler = function(event){
+  event.preventDefault();
+  var city = cityInputEl.value.trim();
+  if(city){
+      getCityWeather(city);
+      get5Day(city);
+      cities.unshift({city});
+      cityInputEl.value = "";
+  } else{
+      alert("Please enter a City");
+  }
+  saveSearch();
+  pastSearch(city);
+}
+
+var saveSearch = function(){
+  localStorage.setItem("cities", JSON.stringify(cities));
+};
 
 function getCoordinates() {
   fetch("https://maps.googleapis.com/maps/api/geocode/json?address=944+Agua+Caliente,+El+Paso,+TX&key=AIzaSyDvRRtw_P5lPBhpH7bb8VJqCg7R7LtI9h0")
@@ -15,20 +37,114 @@ function getCoordinates() {
   })
 }
 
-function get7Day() {
-  var key = 'd31373940f7f8b59573632e5332e9f3f';
-  fetch('https://api.openweathermap.org/data/2.5/onecall?lat=35&lon=139&appid=' + key)  
-  .then(function(resp) { return resp.json() }) // Convert data to json
-  .then(function(data) {
-    console.log(data);
-    displayWeather(data)
-  })
-  .catch(function() {
-    // catch any errors
-  });
+var getCityWeather = function(city){
+    var apiKey = "844421298d794574c100e3409cee0499"
+    var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+
+    fetch(apiURL)
+    .then(function(response){
+        response.json().then(function(data){
+            displayWeather(data, city);
+        });
+    });
+};
+
+var displayWeather = function(weather, searchCity){
+   //clear old content
+   weatherContainerEl.textContent= "";  
+   citySearchInputEl.textContent=searchCity;
+
+   //console.log(weather);
+
+   //create date element
+   var currentDate = document.createElement("span")
+   currentDate.textContent=" (" + moment(weather.dt.value).format("MMM D, YYYY") + ") ";
+   citySearchInputEl.appendChild(currentDate);
+
+   //create an image element
+   var weatherIcon = document.createElement("img")
+   weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`);
+   citySearchInputEl.appendChild(weatherIcon);
+
+   //create a span element to hold temperature data
+   var temperatureEl = document.createElement("span");
+   temperatureEl.textContent = "Temperature: " + weather.main.temp + " °F";
+   temperatureEl.classList = "list-group-item"
+  
+   //create a span element to hold Humidity data
+   var humidityEl = document.createElement("span");
+   humidityEl.textContent = "Humidity: " + weather.main.humidity + " %";
+   humidityEl.classList = "list-group-item"
+
+   //create a span element to hold Wind data
+   var windSpeedEl = document.createElement("span");
+   windSpeedEl.textContent = "Wind Speed: " + weather.wind.speed + " MPH";
+   windSpeedEl.classList = "list-group-item"
+
+   //append to container
+   weatherContainerEl.appendChild(temperatureEl);
+
+   //append to container
+   weatherContainerEl.appendChild(humidityEl);
+
+   //append to container
+   weatherContainerEl.appendChild(windSpeedEl);
+
+   var lat = weather.coord.lat;
+   var lon = weather.coord.lon;
+   getUvIndex(lat,lon)
 }
 
-var display7Day = function(weather){
+var getUvIndex = function(lat,lon){
+    var apiKey = "844421298d794574c100e3409cee0499"
+    var apiURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${apiKey}&lat=${lat}&lon=${lon}`
+    fetch(apiURL)
+    .then(function(response){
+        response.json().then(function(data){
+            displayUvIndex(data)
+           console.log(data)
+        });
+    });
+    console.log(lat);
+    console.log(lon);
+}
+ 
+var displayUvIndex = function(index){
+    var uvIndexEl = document.createElement("div");
+    uvIndexEl.textContent = "UV Index: "
+    uvIndexEl.classList = "list-group-item"
+
+    uvIndexValue = document.createElement("span")
+    uvIndexValue.textContent = index.value
+
+    if(index.value <=2){
+        uvIndexValue.classList = "favorable"
+    }else if(index.value >2 && index.value<=8){
+        uvIndexValue.classList = "moderate "
+    }
+    else if(index.value >8){
+        uvIndexValue.classList = "severe"
+    };
+
+    uvIndexEl.appendChild(uvIndexValue);
+
+    //append index to current weather
+    weatherContainerEl.appendChild(uvIndexEl);
+}
+
+var get5Day = function(city){
+    var apiKey = "844421298d794574c100e3409cee0499"
+    var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`
+
+    fetch(apiURL)
+    .then(function(response){
+        response.json().then(function(data){
+           display5Day(data);
+        });
+    });
+};
+
+var display5Day = function(weather){
     forecastContainerEl.textContent = ""
     forecastTitle.textContent = "5-Day Forecast:";
 
@@ -40,7 +156,7 @@ var display7Day = function(weather){
        var forecastEl=document.createElement("div");
        forecastEl.classList = "card bg-primary text-light m-2";
 
-       //console.log(dailyForecast)
+       console.log(dailyForecast)
 
        //create date element
        var forecastDate = document.createElement("h5")
@@ -72,79 +188,32 @@ var display7Day = function(weather){
        //append to forecast card
        forecastEl.appendChild(forecastHumEl);
 
-        // console.log(forecastEl);
+        console.log(forecastEl);
        //append to five day container
         forecastContainerEl.appendChild(forecastEl);
     }
 
 }
 
-function requestSoil() {
-    fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12.9889055&lng=77.574044", {
-      "method": "GET",
-      "headers": {
-        "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
-        "Content-type": "application/json"
-      }
-    }).then((response) => {
-      console.log(response);
-      response.json().then((data) => {
-        console.log(data);
-      });
-    })
-  };
-  
-  function saveLastWeather() {
-    // Save related form data as an object
-  var weatherDetails = {
-    temperature: temperature.value,
-    humidity: humidity.value,
-    uvIndex: uvIndex.value,
-  }
-  // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-  localStorage.setItem("weatherDetails", JSON.stringify(weatherDetails));
-}
-
-function renderLastWeather() {
-  // Use JSON.parse() to convert text to JavaScript object
-  var lastWeather = JSON.parse(localStorage.getItem("weatherDetails"));
-  // Check if data is returned, if not exit out of the function
-  if (lastWeather !== null) {
-  document.getElementById("temp").innerHTML = lastWeather.temp;
-  document.getElementById("humid").innerHTML = lastWeather.humid;
-  document.getElementById("uv").innerHTML = lastWeather.uv;
-  } else {
-    return;
-  }
-}
-
-function renderLastWeather() {
-  // Use JSON.parse() to convert text to JavaScript object
-  var lastWeather = JSON.parse(localStorage.getItem("weatherDetails"));
-  // Check if data is returned, if not exit out of the function
-  if (lastWeather !== null) {
-  document.getElementById("temp").innerHTML = lastWeather.temp;
-  document.getElementById("humid").innerHTML = lastWeather.humid;
-  document.getElementById("uv").innerHTML = lastWeather.uv;
-  } else {
-    return;
-  }
-}
-
-
-function renderWeather () {
-
-}
-
-getCoordinates()
-
-requestWeather()
-
-displayWeather()
+// SOIL
+// function requestSoil() {
+//   fetch("https://api.ambeedata.com/soil/latest/by-lat-lng", {
+//     "method": "GET",
+//     "headers": {
+//       "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
+//       "Content-type": "application/json"
+//     }
+//   }).then((response) => {
+//     console.log(response);
+//     response.json().then((data) => {
+//       console.log(data);
+//     });
+//   })
+// };
 
 var pastSearch = function(pastSearch){
  
-    // console.log(pastSearch)
+    console.log(pastSearch)
 
     pastSearchEl = document.createElement("button");
     pastSearchEl.textContent = pastSearch;
@@ -164,17 +233,7 @@ var pastSearchHandler = function(event){
     }
 }
 
-// pastSearch();
+pastSearch();
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);
-
-// appends - state selection for soil data, weather dashboard for corresponding input - card content 
-
-function init() {
-  // When the init function is executed, the code inside renderLastGrade function will also execute
-  renderLastWeather();
-}
-
-init()
-
