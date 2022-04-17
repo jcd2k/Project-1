@@ -2,11 +2,14 @@ var cities = [];
 
 var cityFormEl=document.querySelector("#city-search-form");
 var cityInputEl=document.querySelector("#city");
+var addressInputEl=document.querySelector("#address");
+var stateInputEl=document.querySelector("#state");
 var weatherContainerEl=document.querySelector("#current-weather-container");
 var citySearchInputEl = document.querySelector("#searched-city");
 var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
+var soilContainerEl = document.querySelector("#currentsoil");
 
 var formSumbitHandler = function(event){
   event.preventDefault();
@@ -54,7 +57,7 @@ var displayWeather = function(weather, searchCity){
    weatherContainerEl.textContent= "";  
    citySearchInputEl.textContent=searchCity;
 
-   //console.log(weather);
+   console.log(weather);
 
    //create date element
    var currentDate = document.createElement("span")
@@ -93,6 +96,7 @@ var displayWeather = function(weather, searchCity){
    var lat = weather.coord.lat;
    var lon = weather.coord.lon;
    getUvIndex(lat,lon)
+   requestSoil(lat,lon)
 }
 
 var getUvIndex = function(lat,lon){
@@ -195,21 +199,22 @@ var display5Day = function(weather){
 
 }
 
+function requestSoil(lat, lon) {
+  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12&lng=77", {
+    "method": "GET",
+    "headers": {
+      "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
+      "Content-type": "application/json"
+    }
+  }).then((response) => {
+    console.log(response);
+    response.json().then((data) => {
+      console.log(data);
+    });
+  })
+};
+
 // SOIL
-// function requestSoil() {
-//   fetch("https://api.ambeedata.com/soil/latest/by-lat-lng", {
-//     "method": "GET",
-//     "headers": {
-//       "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
-//       "Content-type": "application/json"
-//     }
-//   }).then((response) => {
-//     console.log(response);
-//     response.json().then((data) => {
-//       console.log(data);
-//     });
-//   })
-// };
 
 var pastSearch = function(pastSearch){
  
