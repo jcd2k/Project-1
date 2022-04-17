@@ -9,7 +9,8 @@ var citySearchInputEl = document.querySelector("#searched-city");
 var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
-var soilContainerEl = document.querySelector("#currentsoil");
+var soilContainerEl = document.querySelector("#soil-container");
+var soilTitle = document.querySelector("#searched-soil")
 
 var formSumbitHandler = function(event){
   event.preventDefault();
@@ -148,8 +149,8 @@ var get5Day = function(city){
 };
 
 var display5Day = function(weather){
-    forecastContainerEl.textContent = ""
-    forecastTitle.textContent = "5-Day Forecast:";
+  forecastContainerEl.textContent = ""
+  forecastTitle.textContent = "5-Day Forecast:";
 
     var forecast = weather.list;
         for(var i=5; i < forecast.length; i=i+8){
@@ -200,19 +201,43 @@ var display5Day = function(weather){
 
 // SOIL
 function requestSoil() {
-  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng", {
+  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=30.2672&lng=-97.7431", {
     "method": "GET",
     "headers": {
-      "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
+      "x-api-key": "ae3b2c51f59c70393fcdfd3605893f4c26a5b95312c7e3883c8702d6fc974364",
       "Content-type": "application/json"
     }
   }).then((response) => {
     console.log(response);
     response.json().then((data) => {
+      displaySoil(data)
       console.log(data);
     });
   })
 };
+
+var displaySoil = function (data) {
+  soilContainerEl.textContent = "";
+  soilTitle.textContent = "Soil Conditions:"; 
+  
+//create a span element to hold temp data
+// trying to target the soil moisture and temperature and display it
+  var soilTemperatureEl = document.createElement("span");
+   soilTemperatureEl.textContent = "Temperature: " + data.soil_moisture + " °C";
+   soilTemperatureEl.classList = "soil-list-group-item"
+  
+   //create a span element to hold moisture data
+   var soilMoistureEl = document.createElement("span");
+   soilMoistureEl.textContent = "Moisture: " + data.soil_temperature + " %";
+   soilMoistureEl.classList = "soil-list-group-item"
+
+    //append to container
+    soilContainerEl.appendChild(soilTemperatureEl);
+
+    //append to container
+    soilContainerEl.appendChild(soilMoistureEl);
+}   
+ 
 
 var pastSearch = function(pastSearch){
  
@@ -237,6 +262,8 @@ var pastSearchHandler = function(event){
 }
 
 pastSearch();
+
+requestSoil();
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);
