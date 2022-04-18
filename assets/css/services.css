@@ -17,7 +17,7 @@ body {
   
   .navbar .navbar-start a {
     padding: 30px 50px;
-    color: white;
+    color: black;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -54,6 +54,8 @@ body {
       
   }
 
+
+
  #navbarTop.navbar-menu{
      justify-content: right;
      
@@ -71,6 +73,10 @@ body {
   max-width: 200px;
 }
 
+.homeimage{
+  max-height: 80vh; 
+}
+
 #forecastDisplay,
 #uvIndexColor,
 li {
@@ -80,7 +86,7 @@ li {
 #citySearch,
 #forecastDisplay,
 .card {
-  background-color: #5A6C73!important;
+  background-color: gray!important;
 }
 
 #citySearch {
@@ -89,4 +95,22 @@ li {
 
 #fiveForecast .card {
   border: 1px solid white!important;
+}
+
+#soil-container {
+  background-color: #71be52;
+  width: 50vw;
+  align-items: center;
+  display: block;
+  font-size: 25px;
+}
+
+.footer{
+  background: black;
+}
+
+p{
+  color: whitesmoke;
+  font-size: 22px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

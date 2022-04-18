@@ -9,6 +9,8 @@ body {
     margin: 0;
     
   }
+ 
+  
   
   .navbar-start--centered {
     flex-grow: 1;
@@ -17,7 +19,7 @@ body {
   
   .navbar .navbar-start a {
     padding: 30px 50px;
-    color: white;
+    color: black;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -93,10 +95,30 @@ p{
   background: #71be52;
 }
 
+div.block-1.has-text-centered{
+  color: whitesmoke;
+}
+
+p{
+  color: whitesmoke;
+  font-size: 22px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+
+div.block-2.has-text-centered{
+  color: whitesmoke;
+  font-size: 22px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
 
 
 footer.footer{
-  background: gray;
+  background:#71be52;
+  color:whitesmoke
 }
  
 

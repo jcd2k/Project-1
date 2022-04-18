@@ -11,6 +11,32 @@ var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 var soilContainerEl = document.querySelector("#currentsoil");
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
+
 var formSumbitHandler = function(event){
   event.preventDefault();
   var city = cityInputEl.value.trim();
@@ -36,8 +62,17 @@ function getCoordinates() {
     console.log(response);
     response.json().then((data) => {
       console.log(data);
+      console.log(data.results[0].geometry.location.lat)
+      console.log(data.results[0].geometry.location.lng)
     });
   })
+}
+
+var lat = function(){
+  fetch("https://maps.googleapis.com/maps/api/geocode/json?address=944+Agua+Caliente,+El+Paso,+TX&key=AIzaSyDvRRtw_P5lPBhpH7bb8VJqCg7R7LtI9h0")
+  .then(res => res.json())
+  .then(data => lat = data.results[0].geometry.location.lat)
+  .then(() => console.log(lat))
 }
 
 var getCityWeather = function(city){
@@ -95,8 +130,8 @@ var displayWeather = function(weather, searchCity){
 
    var lat = weather.coord.lat;
    var lon = weather.coord.lon;
-   getUvIndex(lat,lon)
    requestSoil(lat,lon)
+   getUvIndex(lat,lon)
 }
 
 var getUvIndex = function(lat,lon){
@@ -201,45 +236,25 @@ var display5Day = function(weather){
 }
 
 var requestSoil = function() {
-  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12&lng=77", {
+  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=31.7619&lng=106.4850", {
     "method": "GET",
     "headers": {
-      "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
+      "x-api-key": "ae3b2c51f59c70393fcdfd3605893f4c26a5b95312c7e3883c8702d6fc974364",
       "Content-type": "application/json"
     }
   }).then((response) => {
     console.log(response);
     response.json().then((data) => {
-      console.log(data);
-      displaySoil(data);
+      console.log(data)
+      console.log(data.data[0].soil_temperature)
+      document.getElementById("soil-temp")
+      .innerText=data.data[0].soil_temperature;
+      console.log(data.data[0].soil_moisture)
+      document.getElementById("soil-moist")
+      .innerText=data.data[0].soil_moisture;
     });
   })
 };
-
-// var displaySoil = function(){
-//   var soilContainerEl = document.createElement("div");
-//   soilContainerEl.textContent = "Soil Conditions: "
-//   soilContainerEl.classList = "columns"
-
-//   uvIndexValue = document.createElement("span")
-//   uvIndexValue.textContent = index.value
-
-//   if(index.value <=2){
-//       uvIndexValue.classList = "favorable"
-//   }else if(index.value >2 && index.value<=8){
-//       uvIndexValue.classList = "moderate "
-//   }
-//   else if(index.value >8){
-//       uvIndexValue.classList = "severe"
-//   };
-
-//   uvIndexEl.appendChild(uvIndexValue);
-
-//   //append index to current weather
-//   weatherContainerEl.appendChild(uvIndexEl);
-// }
-
-// SOIL
 
 var pastSearch = function(pastSearch){
  
@@ -254,7 +269,6 @@ var pastSearch = function(pastSearch){
     pastSearchButtonEl.prepend(pastSearchEl);
 }
 
-
 var pastSearchHandler = function(event){
     var city = event.target.getAttribute("data-city")
     if(city){
@@ -265,7 +279,7 @@ var pastSearchHandler = function(event){
 
 pastSearch();
 
-requestSoil();
+getCoordinates();
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);

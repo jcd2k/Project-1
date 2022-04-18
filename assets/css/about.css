@@ -16,7 +16,7 @@ body {
   
   .navbar .navbar-start a {
     padding: 30px 50px;
-    color: white;
+    color: black;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -62,6 +62,40 @@ body {
       background: #71be52;
   }
 
+  .homeimage{
+    max-height: 80vh;
+    
+  }
+  .aboutImage{
+    max-height: 80vh;
+    
+  }
+  section.section{
+    padding: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:white;
+
+  }
+
+  footer.footer{
+    background-color: #71be52;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  h1.title.has-text-centered {
+    text-decoration: underline;
+  }
+
+  h2.subtitle.has-text-centered {
+    color: whitesmoke;
+    font-size: 24px;
+
+  }
+
+  p{
+    color: whitesmoke;
+    font-size: 20px;
+  }
 
 
  
