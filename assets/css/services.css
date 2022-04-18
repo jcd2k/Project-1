@@ -17,7 +17,7 @@ body {
   
   .navbar .navbar-start a {
     padding: 30px 50px;
-    color: white;
+    color: black;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -53,6 +53,8 @@ body {
      
       
   }
+
+
 
  #navbarTop.navbar-menu{
      justify-content: right;
@@ -99,4 +101,14 @@ li {
   background-color: ghostwhite;
   align-items: center;
   display: block;
+}
+
+.footer{
+  background: black;
+}
+
+p{
+  color: whitesmoke;
+  font-size: 22px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
