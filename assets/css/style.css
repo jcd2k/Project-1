@@ -95,10 +95,30 @@ p{
   background: #71be52;
 }
 
+div.block-1.has-text-centered{
+  color: whitesmoke;
+}
+
+p{
+  color: whitesmoke;
+  font-size: 22px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+
+div.block-2.has-text-centered{
+  color: whitesmoke;
+  font-size: 22px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+
 
 
 footer.footer{
   background:#71be52;
+  color:whitesmoke
 }
  
 
