@@ -98,9 +98,11 @@ li {
 }
 
 #soil-container {
-  background-color: ghostwhite;
+  background-color: #71be52;
+  width: 50vw;
   align-items: center;
   display: block;
+  font-size: 25px;
 }
 
 .footer{
