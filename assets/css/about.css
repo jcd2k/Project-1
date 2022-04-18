@@ -62,7 +62,10 @@ body {
       background: #71be52;
   }
 
-
+  .aboutImage{
+    max-height: 80vh;
+    
+  }
 
  
 

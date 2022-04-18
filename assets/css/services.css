@@ -90,3 +90,9 @@ li {
 #fiveForecast .card {
   border: 1px solid white!important;
 }
+
+#soil-container {
+  background-color: ghostwhite;
+  align-items: center;
+  display: block;
+}

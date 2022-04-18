@@ -210,8 +210,13 @@ var requestSoil = function() {
   }).then((response) => {
     console.log(response);
     response.json().then((data) => {
-      console.log(data);
-      displaySoil(data);
+      console.log(data)
+      console.log(data.data[0].soil_temperature)
+      document.getElementById("soil-temp")
+      .innerText=data.data[0].soil_temperature;
+      console.log(data.data[0].soil_moisture)
+      document.getElementById("soil-moist")
+      .innerText=data.data[0].soil_moisture;
     });
   })
 };
