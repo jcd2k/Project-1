@@ -213,7 +213,7 @@ var requestSoil = function() {
   fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=31.7619&lng=106.4850", {
     "method": "GET",
     "headers": {
-      "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
+      "x-api-key": "ae3b2c51f59c70393fcdfd3605893f4c26a5b95312c7e3883c8702d6fc974364",
       "Content-type": "application/json"
     }
   }).then((response) => {
@@ -254,8 +254,6 @@ var pastSearchHandler = function(event){
 pastSearch();
 
 getCoordinates();
-
-requestSoil();
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);
