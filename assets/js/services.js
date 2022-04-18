@@ -36,8 +36,17 @@ function getCoordinates() {
     console.log(response);
     response.json().then((data) => {
       console.log(data);
+      console.log(data.results[0].geometry.location.lat)
+      console.log(data.results[0].geometry.location.lng)
     });
   })
+}
+
+var lat = function(){
+  fetch("https://maps.googleapis.com/maps/api/geocode/json?address=944+Agua+Caliente,+El+Paso,+TX&key=AIzaSyDvRRtw_P5lPBhpH7bb8VJqCg7R7LtI9h0")
+  .then(res => res.json())
+  .then(data => lat = data.results[0].geometry.location.lat)
+  .then(() => console.log(lat))
 }
 
 var getCityWeather = function(city){
@@ -95,8 +104,8 @@ var displayWeather = function(weather, searchCity){
 
    var lat = weather.coord.lat;
    var lon = weather.coord.lon;
-   getUvIndex(lat,lon)
    requestSoil(lat,lon)
+   getUvIndex(lat,lon)
 }
 
 var getUvIndex = function(lat,lon){
@@ -201,7 +210,7 @@ var display5Day = function(weather){
 }
 
 var requestSoil = function() {
-  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12&lng=77", {
+  fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=31.7619&lng=106.4850", {
     "method": "GET",
     "headers": {
       "x-api-key": "3c5a5051d024c308e76bc2b15d2749e716b5395201a876fd6cf3453a7d6eb9b3",
@@ -221,31 +230,6 @@ var requestSoil = function() {
   })
 };
 
-// var displaySoil = function(){
-//   var soilContainerEl = document.createElement("div");
-//   soilContainerEl.textContent = "Soil Conditions: "
-//   soilContainerEl.classList = "columns"
-
-//   uvIndexValue = document.createElement("span")
-//   uvIndexValue.textContent = index.value
-
-//   if(index.value <=2){
-//       uvIndexValue.classList = "favorable"
-//   }else if(index.value >2 && index.value<=8){
-//       uvIndexValue.classList = "moderate "
-//   }
-//   else if(index.value >8){
-//       uvIndexValue.classList = "severe"
-//   };
-
-//   uvIndexEl.appendChild(uvIndexValue);
-
-//   //append index to current weather
-//   weatherContainerEl.appendChild(uvIndexEl);
-// }
-
-// SOIL
-
 var pastSearch = function(pastSearch){
  
     console.log(pastSearch)
@@ -259,7 +243,6 @@ var pastSearch = function(pastSearch){
     pastSearchButtonEl.prepend(pastSearchEl);
 }
 
-
 var pastSearchHandler = function(event){
     var city = event.target.getAttribute("data-city")
     if(city){
@@ -269,6 +252,8 @@ var pastSearchHandler = function(event){
 }
 
 pastSearch();
+
+getCoordinates();
 
 requestSoil();
 

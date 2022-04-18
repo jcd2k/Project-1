@@ -71,6 +71,10 @@ body {
   max-width: 200px;
 }
 
+.homeimage{
+  max-height: 80vh; 
+}
+
 #forecastDisplay,
 #uvIndexColor,
 li {
