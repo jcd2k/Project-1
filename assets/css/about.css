@@ -16,7 +16,7 @@ body {
   
   .navbar .navbar-start a {
     padding: 30px 50px;
-    color: white;
+    color: black;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -62,12 +62,10 @@ body {
       background: #71be52;
   }
 
-<<<<<<< HEAD
   .homeimage{
     max-height: 80vh;
     
   }
-=======
   .aboutImage{
     max-height: 80vh;
     
@@ -99,7 +97,6 @@ body {
     font-size: 20px;
   }
 
->>>>>>> 365e9eb0c200b3f50187d9a1193df1d33cb58802
 
  
 

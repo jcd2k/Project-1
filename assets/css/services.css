@@ -17,7 +17,7 @@ body {
   
   .navbar .navbar-start a {
     padding: 30px 50px;
-    color: white;
+    color: black;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -53,6 +53,8 @@ body {
      
       
   }
+
+
 
  #navbarTop.navbar-menu{
      justify-content: right;
