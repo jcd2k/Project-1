@@ -97,12 +97,15 @@ p{
 
 div.block-1.has-text-centered{
   color: whitesmoke;
+  padding: 30px;
 }
 
 p{
   color: whitesmoke;
   font-size: 22px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  line-height: 15px;
   
 }
 
@@ -110,6 +113,7 @@ div.block-2.has-text-centered{
   color: whitesmoke;
   font-size: 22px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 10px;
 }
 
 
