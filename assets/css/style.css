@@ -1,0 +1,110 @@
+html
+body{
+    height: 100%;
+    background-color: #71be52;
+}
+
+
+body {
+    margin: 0;
+    
+  }
+  
+  .navbar-start--centered {
+    flex-grow: 1;
+    justify-content:center;
+  }
+  
+  .navbar .navbar-start a {
+    padding: 30px 50px;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+ 
+ 
+  .navbar .navbar-start a.logo:hover img,
+  .navbar .navbar-start a.logo:hover img:hover {
+    fill: #abcf39;
+    
+  }
+  
+  .navbar .navbar-end a {
+    padding: 30px 20px;
+    color:#194522;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar .navbar-start a:hover,
+  .navbar .navbar-end a:hover {
+    color: #93bb0e;
+  }
+  
+  .navbar .navbar-end  {
+    padding-right: 6px;
+  }
+  
+  .navbarTop .navbar-menu{
+      flex: inline;
+      justify-content: right;
+      
+     
+      
+  }
+
+ #navbarTop.navbar-menu{
+     justify-content: right;
+     
+ }
+
+  nav.navbar.is-fixed-top{
+      background: #71be52;
+  }
+
+  .aboutImage{
+    max-height: 80vh;
+    
+  }
+
+  @media screen and (max-width: 768px) {
+    main,
+    .homeimage{ 
+      flex-direction: column;
+      max-height: 40vh;
+      font-size: large;
+      
+
+
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    main,
+    .homeimage{
+      max-height: 80vh;
+      flex-direction: column;
+    }
+  }
+
+div,
+p{
+  background: #71be52;
+  color: black;
+  font-size: 22px;
+
+}
+
+
+strong{
+  color:black;
+}
+
+
+
+footer.footer{
+  background: #71be52;
+}
+ 
