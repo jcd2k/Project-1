@@ -57,7 +57,7 @@ var displayWeather = function(weather, searchCity){
    weatherContainerEl.textContent= "";  
    citySearchInputEl.textContent=searchCity;
 
-   console.log(weather);
+   // console.log(weather);
 
    //create date element
    var currentDate = document.createElement("span")
@@ -143,6 +143,7 @@ var get5Day = function(city){
     fetch(apiURL)
     .then(function(response){
         response.json().then(function(data){
+          console.log(data)
            display5Day(data);
         });
     });
@@ -199,7 +200,7 @@ var display5Day = function(weather){
 
 }
 
-function requestSoil(lat, lon) {
+var requestSoil = function() {
   fetch("https://api.ambeedata.com/soil/latest/by-lat-lng?lat=12&lng=77", {
     "method": "GET",
     "headers": {
@@ -210,9 +211,33 @@ function requestSoil(lat, lon) {
     console.log(response);
     response.json().then((data) => {
       console.log(data);
+      displaySoil(data);
     });
   })
 };
+
+// var displaySoil = function(){
+//   var soilContainerEl = document.createElement("div");
+//   soilContainerEl.textContent = "Soil Conditions: "
+//   soilContainerEl.classList = "columns"
+
+//   uvIndexValue = document.createElement("span")
+//   uvIndexValue.textContent = index.value
+
+//   if(index.value <=2){
+//       uvIndexValue.classList = "favorable"
+//   }else if(index.value >2 && index.value<=8){
+//       uvIndexValue.classList = "moderate "
+//   }
+//   else if(index.value >8){
+//       uvIndexValue.classList = "severe"
+//   };
+
+//   uvIndexEl.appendChild(uvIndexValue);
+
+//   //append index to current weather
+//   weatherContainerEl.appendChild(uvIndexEl);
+// }
 
 // SOIL
 
@@ -239,6 +264,8 @@ var pastSearchHandler = function(event){
 }
 
 pastSearch();
+
+requestSoil();
 
 cityFormEl.addEventListener("submit", formSumbitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);
