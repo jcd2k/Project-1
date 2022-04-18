@@ -2,12 +2,12 @@ html
 body{
     height: 100%;
     background-color: #71be52;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
 body {
     margin: 0;
-    
   }
   
   .navbar-start--centered {
@@ -63,41 +63,30 @@ body {
       background: #71be52;
   }
 
-  .homeimage{
-    max-height: 80vh;
-    
-  }
-
-  @media screen and (max-width: 768px) {
-    main,
-    .homeimage{ 
-      flex-direction: column;
-      max-height: 40vh;
-      font-size: large;
-      
-
-
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    main,
-    .homeimage{
-      max-height: 80vh;
-      flex-direction: column;
-    }
-  }
-
-div,
-p{
-  background: #71be52;
+  #weatherContent {
+    display: none;
 }
 
-
-
-footer.footer{
-  background: gray;
+.input-group {
+  max-width: 200px;
 }
- 
 
+#forecastDisplay,
+#uvIndexColor,
+li {
+  color: #4D4F53!important;
+}
 
+#citySearch,
+#forecastDisplay,
+.card {
+  background-color: #5A6C73!important;
+}
+
+#citySearch {
+  height: 100vh;
+}
+
+#fiveForecast .card {
+  border: 1px solid white!important;
+}
